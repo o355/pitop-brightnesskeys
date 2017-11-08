@@ -29,7 +29,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
  **File manager:**
  
  ```
-    <keybind key="0xC8">
+     <keybind key="0xC8">
       <action name="Execute">
         <command>pcmanfm %U</command>
       </action>
@@ -39,7 +39,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
  **Terminal:**
  
  ```
-    <keybind key="0xC9">
+     <keybind key="0xC9">
       <action name="Execute">
         <command>lxterminal</command>
       </action>
@@ -49,7 +49,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
  **Calculator:**
  
  ```
-    <keybind key="0xCA">
+     <keybind key="0xCA">
       <action name="Execute">
         <command>galculator</command>
       </action>
