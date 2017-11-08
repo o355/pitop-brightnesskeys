@@ -33,7 +33,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
       <action name="Execute">
         <command>pcmanfm %U</command>
       </action>
-    </keybind>
+     </keybind>
  ```
  
  **Terminal:**
@@ -43,7 +43,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
       <action name="Execute">
         <command>lxterminal</command>
       </action>
-    </keybind>
+     </keybind>
  ```
  
  **Calculator:**
@@ -53,7 +53,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
       <action name="Execute">
         <command>galculator</command>
       </action>
-    </keybind>
+     </keybind>
  ```
  
  # Conclusion
