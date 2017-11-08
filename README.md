@@ -12,12 +12,12 @@ In addition, the folder key is `200`, terminal `201`, and calc `202`. This trans
 Thanks to @rricharz for the original code. To restore functionality to your brightness keys with the new device manager, you'll want to add the following code to the keyboard section of the file `/home/pi/.config/openbox/lxde-pi-rc.xml`.
 
 ```
- <keybind key="0xC7">
+    <keybind key="0xC7">
       <action name="Execute">
         <command>pt-brightness -i</command>
       </action>
     </keybind>
- <keybind key="0xC6">
+    <keybind key="0xC6">
       <action name="Execute">
         <command>pt-brightness -d</command>
       </action>
@@ -29,7 +29,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
  **File manager:**
  
  ```
-  <keybind key="0xC8">
+    <keybind key="0xC8">
       <action name="Execute">
         <command>pcmanfm %U</command>
       </action>
@@ -39,7 +39,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
  **Terminal:**
  
  ```
-  <keybind key="0xC9">
+    <keybind key="0xC9">
       <action name="Execute">
         <command>lxterminal</command>
       </action>
@@ -49,7 +49,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
  **Calculator:**
  
  ```
-  <keybind key="0xCA">
+    <keybind key="0xCA">
       <action name="Execute">
         <command>galculator</command>
       </action>
