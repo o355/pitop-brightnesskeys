@@ -127,3 +127,8 @@ Again, thanks to Mike for commenting on this repo and
  Thanks to the pi-top team for finally making some improvements for open-sourcing their code and allowing the Pi-Top to work on normal Raspbian. Having open-source code opens the gate for advanced users tinkering with their Pi-Tops.
  
  Thanks to @m-roberts for making an issue and addressing some concerns I had. 
+
+# Typos? Confusing documentation? Issues?
+Submit a PR or issue! I'm actively working on my Python project so I don't have all the time in the world to maintain this repo.
+
+This was a hacked-up repo made at night to make brightness keys and shortcut keys work.
