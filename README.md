@@ -1,7 +1,7 @@
 # Using the brightness keys & other keys on the Pi-Top
 As the title says, we'll be using key shortcuts to enable the brightness keys on the pi-top to work with Raspbian Stretch.
 
-I have a Pi-Top v1 running Stretch, and that's what I'm testing on. Please submit a pull request if you have your hands on a Pi-Top v2 and have the keycodes for the shortcuts, if they're different.
+I have a Pi-Top v1 running Stretch, and that's what I'm testing on. Please submit a pull request or issue if you have your hands on a Pi-Top v2 and have the keycodes for the shortcuts, if they're different.
 
 # Technical stuff
 Running `xev` shows that the brightness decrease key is set to `198`, and the increase key is set to `199`. In hex with `0x` this translates to `0xC6` and `0xC7` being the keys to decrease and increase brightness respectively.
@@ -15,6 +15,8 @@ Anyways, you can use it as a calculator key, but you can alternatively freely us
 
 # Getting shortcuts to work
 Thanks to @rricharz for the original code. To restore functionality to your brightness keys with the new device manager, you'll want to add the following code to the keyboard section of the file `/home/pi/.config/openbox/lxde-pi-rc.xml`.
+
+The code below is properly formatted to fit the file with tabbing and all.
 
 ```
     <keybind key="0xC7">
@@ -61,6 +63,8 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
      </keybind>
  ```
  
+ Once you're done adding the key shortcuts, make sure to restart your Pi-Top.
+ 
  ## Alternative: Using pt-input instead of LXDE shortcut keys
  Thanks @m-roberts (Mike) from Pi-Top for suggesting this. But before I start, quoting Mike, "This is not clear, I realise, and the visibility is something that we are working on...". In my view, take this as technical information and something to use down the line until things get clearer. 
  
@@ -80,8 +84,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
 ```
 
 As an additional note, it appears this method uses `showkey` for capturing key numbers. `190` is the brightness down key with `showkey`, but with `xev` it's 199.
- 
- Once you're done adding the key shortcuts, make sure to restart your Pi-Top.
+
  
  # Extra messages
 With the included pt-device-manager your Raspbian desktop gets scaled up, resulting in some blurry icons. Mike (thanks again) suggested a few ways to disable scaling.
@@ -121,6 +124,6 @@ Again, thanks to Mike for commenting on this repo and
  # Conclusion
  Thanks to @rricharz for the original code to do shortcuts for the Pi-Top brightness.
  
- Thanks to the pi-top team for finally making some improvements for open-sourcing their code and allowing the Pi-Top to work on normal Raspbian. I do suggest to the team that they should open-source everything pi-top related, and allow their code to work on platforms like Ubuntu MATE for the Pi.
+ Thanks to the pi-top team for finally making some improvements for open-sourcing their code and allowing the Pi-Top to work on normal Raspbian. Having open-source code opens the gate for advanced users tinkering with their Pi-Tops.
  
  Thanks to @m-roberts for making an issue and addressing some concerns I had. 
