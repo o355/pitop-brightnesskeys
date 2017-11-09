@@ -9,7 +9,9 @@ Running `xev` shows that the brightness decrease key is set to `198`, and the in
 In addition, the folder key is `200`, terminal `201`, and dashboard `202`. This translates to `0xC8`, `0xC9`, and `0xCA` being the hex for these keys.
 
 # The dashboard key - What to do about it on Raspbian
-Use it as a calculator shortcut. Launch minecraft. Make it your freely open macro key to launch a program.
+Here's the deal, it completely blew past me that the dashboard key was the dashboard key when I wrote this, and I actually assumed it was a calculator key! It looked like a calculator. Please sue.
+
+Anyways, you can use it as a calculator key, but you can alternatively freely use it as a macro to launch any program you wish.
 
 # Getting shortcuts to work
 Thanks to @rricharz for the original code. To restore functionality to your brightness keys with the new device manager, you'll want to add the following code to the keyboard section of the file `/home/pi/.config/openbox/lxde-pi-rc.xml`.
@@ -49,7 +51,7 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
      </keybind>
  ```
  
- **Calculator:**
+ **Calculator for the dashboard key:**
  
  ```
      <keybind key="0xCA">
