@@ -6,7 +6,10 @@ I have a Pi-Top v1 running Stretch, and that's what I'm testing on. Please submi
 # Technical stuff
 Running `xev` shows that the brightness decrease key is set to `198`, and the increase key is set to `199`. In hex with `0x` this translates to `0xC6` and `0xC7` being the keys to decrease and increase brightness respectively.
 
-In addition, the folder key is `200`, terminal `201`, and calc `202`. This translates to `0xC8`, `0xC9`, and `0xCA` being the hex for these keys.
+In addition, the folder key is `200`, terminal `201`, and dashboard `202`. This translates to `0xC8`, `0xC9`, and `0xCA` being the hex for these keys.
+
+# The dashboard key - What to do about it on Raspbian
+Use it as a calculator shortcut. Launch minecraft. Make it your freely open macro key to launch a program.
 
 # Getting shortcuts to work
 Thanks to @rricharz for the original code. To restore functionality to your brightness keys with the new device manager, you'll want to add the following code to the keyboard section of the file `/home/pi/.config/openbox/lxde-pi-rc.xml`.
@@ -56,18 +59,66 @@ Thanks to @rricharz for the original code. To restore functionality to your brig
      </keybind>
  ```
  
+ ## Alternative: Using pt-input instead of LXDE shortcut keys
+ Thanks @m-roberts (Mike) from Pi-Top for suggesting this. But before I start, quoting Mike, "This is not clear, I realise, and the visibility is something that we are working on...". In my view, take this as technical information and something to use down the line until things get clearer. 
+ 
+ To summarize his issue post, Pi-Top already provides a package called `pt-input` to do the same thing as LXDE shortcut keys.
+ 
+ To install the package, use `sudo apt install pt-input`. Then, in `/etc/pi-top/pt-input/keyboard-commands`, you can edit the file with a shortcut. Here's the sample code he provided:
+ 
+ ```
+ {
+    "id": {
+        "keycode": 190,
+        "name": "KEY_F20",
+        "notes": ""
+    },
+    "commands": ["pt-brightness -d"]
+},
+```
+
+As an additional note, it appears this method uses `showkey` for capturing key numbers. `190` is the brightness down key with `showkey`, but with `xev` it's 199.
+ 
  Once you're done adding the key shortcuts, make sure to restart your Pi-Top.
  
  # Extra messages
- I absolutely despise of the scaling that gets thrown in when you install the hub software. This should be configurable, and a user can't easily hack some code to disable the scaling. Not cool!
- 
- Right now, I can't pinpoint how and why this is happening, all of their code for the manager isn't open source (ARGHHHH!!!!!), so bear with blurry icons until I can see the source code and track down why this is happening.
- 
- For the UI, a semi-decent fix is to go into apperance settings, change the font size to 14, and change the menu size from medium back to large. I can't pinpoint a fix for the terminal, and I suspect pt-desktop is causing these permanent changes.
- 
- I also had an issue where after a reboot after installing the pt-hub software I was entirely unable to control the brightness, it was stuck at 0 brightness.
+With the included pt-device-manager your Raspbian desktop gets scaled up, resulting in some blurry icons. Mike (thanks again) suggested a few ways to disable scaling.
+
+A permanent method is to install `pt-hub` with this command:
+
+```
+sudo apt install --no-install-recommends pt-hub
+```
+
+This won't install the desktop messaging service, so it appears you won't get important low battery warnings.
+
+A short-term fix to enable the messaging service, but disable scaling is to do the following:
+
+Back up these files:
+* /etc/xdg/lxpanel/default/panels/panel
+* /usr/share/raspi-ui-overrides/gtk.css
+* /etc/xdg/lxsession/LXDE-pi/desktop.conf
+* /etc/xdg/pcmanfm/LXDE-pi/desktop-items-0.conf
+* /usr/share/lxterminal/lxterminal.conf
+* /home/pi/.config/lxpanel/LXDE-pi/panels/panel
+* /home/pi/.config/gtk-3.0/gtk.css
+* /home/pi/.config/lxsession/LXDE-pi/desktop.conf
+* /home/pi/.config/pcmanfm/LXDE-pi/desktop-items-0.conf
+* /home/pi/.config/lxterminal/lxterminal.conf
+
+Install the hub software:
+
+`sudo apt install pt-hub`
+
+Disable pt-desktop:
+
+`sudo systemctl disable pt-desktop`
+
+Again, thanks to Mike for commenting on this repo and
  
  # Conclusion
  Thanks to @rricharz for the original code to do shortcuts for the Pi-Top brightness.
  
  Thanks to the pi-top team for finally making some improvements for open-sourcing their code and allowing the Pi-Top to work on normal Raspbian. I do suggest to the team that they should open-source everything pi-top related, and allow their code to work on platforms like Ubuntu MATE for the Pi.
+ 
+ Thanks to @m-roberts for making an issue and addressing some concerns I had. 
