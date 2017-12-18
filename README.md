@@ -1,7 +1,9 @@
 # Using the brightness keys & other keys on the Pi-Top
 As the title says, we'll be using key shortcuts to enable the brightness keys on the pi-top to work with Raspbian Stretch.
 
-I have a Pi-Top v1 running Stretch, and that's what I'm testing on. Please submit a pull request or issue if you have your hands on a Pi-Top v2 and have the keycodes for the shortcuts, if they're different.
+**Please note: The Pi-Top v2 can apparently do brightness without the need of custom shortcuts in Raspbian.**
+
+I have a Pi-Top v1 running Stretch, and that's what I'm testing on.
 
 # Technical stuff
 Running `xev` shows that the brightness decrease key is set to `198`, and the increase key is set to `199`. In hex with `0x` this translates to `0xC6` and `0xC7` being the keys to decrease and increase brightness respectively.
